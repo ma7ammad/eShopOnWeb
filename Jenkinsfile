@@ -5,10 +5,10 @@ node('DOTNETCORE'){
 	}
 	stage('Build'){
 		try{
-    echo '"$WORKSPACE/eShopOnWeb/src/ApplicationCore"'
-		sh 'dotnet build "$WORKSPACE/eShopOnWeb/src/ApplicationCore"'
+    echo '"$WORKSPACE/src/ApplicationCore"'
+		sh 'dotnet build "$WORKSPACE/src/ApplicationCore"'
 		}finally{
-		archiveArtifacts artifacts: "$WORKSPACE/eShopOnWeb/src/ApplicationCore/*.*"
+		archiveArtifacts artifacts: "$WORKSPACE/src/ApplicationCore/*.*"
 		}
 	}
 	stage('Test'){
@@ -21,6 +21,6 @@ node('DOTNETCORE'){
 		echo 'Push to deployment'
 	}
 	stage('Archive'){
-		//archiveArtifacts artifacts: '"$WORKSPACE/eShopOnWeb/src/ApplicationCore/*.*"
+		//archiveArtifacts artifacts: '"$WORKSPACE/src/ApplicationCore/*.*"
 	}
 }
