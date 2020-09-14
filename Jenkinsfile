@@ -12,12 +12,14 @@ node('DOTNETCORE'){
 		sh 'dotnet build "$WORKSPACE/src/PublicApi"'
 		sh 'dotnet build "$WORKSPACE/src/Web"'
 		sh 'dotnet build "$WORKSPACE/tests/UnitTests"'
+		sh 'dotnet build "$WORKSPACE/tests/IntegrationTests"'
 		}finally{
 		archiveArtifacts artifacts: "src/ApplicationCore/*.*"
 		}
 	}
 	stage('Test'){
 		sh 'dotnet test "$WORKSPACE/tests/UnitTests"'
+		sh 'dotnet test "$WORKSPACE/tests/IntegrationTests"'
 	}
 	stage('Package'){
 		echo 'Zip it up'
