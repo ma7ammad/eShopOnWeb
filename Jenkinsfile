@@ -17,7 +17,7 @@ node('DOTNETCORE'){
 		}
 	}
 	stage('Test'){
-		echo 'Execute unit tests'
+		sh 'dotnet test "$WORKSPACE/tests/UnitTests"'
 	}
 	stage('Package'){
 		echo 'Zip it up'
