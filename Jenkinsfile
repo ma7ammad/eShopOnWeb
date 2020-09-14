@@ -21,6 +21,6 @@ node('DOTNETCORE'){
 		echo 'Push to deployment'
 	}
 	stage('Archive'){
-		archiveArtifacts artifacts: '"$WORKSPACE/eShopOnWeb/src/ApplicationCore/*.*"
+		//archiveArtifacts artifacts: '"$WORKSPACE/eShopOnWeb/src/ApplicationCore/*.*"
 	}
 }
