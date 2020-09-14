@@ -5,7 +5,13 @@ node('DOTNETCORE'){
 	stage('Build'){
 		try{
     echo '"$WORKSPACE/src/ApplicationCore"'
-		sh 'dotnet build "$WORKSPACE/src"'
+		sh 'dotnet build "$WORKSPACE/src/ApplicationCore"'
+		sh 'dotnet build "$WORKSPACE/src/BlazorAdmin"'
+		sh 'dotnet build "$WORKSPACE/src/BlazorShared"'
+		sh 'dotnet build "$WORKSPACE/src/Infrastructure"'
+		sh 'dotnet build "$WORKSPACE/src/PublicApi"'
+		sh 'dotnet build "$WORKSPACE/src/Web"'
+		sh 'dotnet build "$WORKSPACE/tests/UnitTests"'
 		}finally{
 		archiveArtifacts artifacts: "src/ApplicationCore/*.*"
 		}
