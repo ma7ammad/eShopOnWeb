@@ -5,7 +5,7 @@ node('DOTNETCORE'){
 	stage('Build'){
 		try{
     echo '"$WORKSPACE/src/ApplicationCore"'
-		sh 'dotnet build "$WORKSPACE/src/ApplicationCore"'
+		sh 'dotnet build "$WORKSPACE/src"'
 		}finally{
 		archiveArtifacts artifacts: "src/ApplicationCore/*.*"
 		}
