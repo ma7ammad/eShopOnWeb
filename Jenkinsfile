@@ -8,7 +8,7 @@ node('DOTNETCORE'){
     echo '"$WORKSPACE/src/ApplicationCore"'
 		sh 'dotnet build "$WORKSPACE/src/ApplicationCore"'
 		}finally{
-		archiveArtifacts artifacts: "$WORKSPACE/src/ApplicationCore/*.*"
+		archiveArtifacts artifacts: ‘src/ApplicationCore/*.*’
 		}
 	}
 	stage('Test'){
@@ -21,6 +21,6 @@ node('DOTNETCORE'){
 		echo 'Push to deployment'
 	}
 	stage('Archive'){
-		//archiveArtifacts artifacts: '"$WORKSPACE/src/ApplicationCore/*.*"
+		archiveArtifacts artifacts: ‘src/ApplicationCore/*.*’
 	}
 }
