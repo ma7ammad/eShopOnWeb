@@ -1,4 +1,3 @@
- 
 node('DOTNETCORE'){
 	stage('SCM'){
 		checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ma7ammad/eShopOnWeb']]])
@@ -8,7 +7,7 @@ node('DOTNETCORE'){
     echo '"$WORKSPACE/src/ApplicationCore"'
 		sh 'dotnet build "$WORKSPACE/src/ApplicationCore"'
 		}finally{
-		archiveArtifacts artifacts: ‘src/ApplicationCore/*.*’
+		archiveArtifacts artifacts: "$WORKSPACE/src/ApplicationCore/*.*"
 		}
 	}
 	stage('Test'){
@@ -21,6 +20,6 @@ node('DOTNETCORE'){
 		echo 'Push to deployment'
 	}
 	stage('Archive'){
-		archiveArtifacts artifacts: ‘src/ApplicationCore/*.*’
+		//archiveArtifacts artifacts: '"$WORKSPACE/src/ApplicationCore/*.*"
 	}
 }
